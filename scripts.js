@@ -28,9 +28,16 @@ function addBookToLibrary(theBook) {
   myLibrary.push(theBook);
 }
 
+function addItemToTheDOM(myBook) {
+  document.querySelector("#book-cards").innerHTML += htmlCard;
+  document.querySelector("#titleOfTheBook").innerText = myBook.title;
+  document.querySelector("#nameOfTheAuthor").innerText = myBook.author;
+  document.querySelector("#numberOfPages").innerText = myBook.pages;
+  document.querySelector("#titleOfTheBook").removeAttribute("id");
+  document.querySelector("#nameOfTheAuthor").removeAttribute("id");
+  document.querySelector("#numberOfPages").removeAttribute("id");
+}
 
-
-document.querySelector("#book-cards").innerHTML += htmlCard;
-document.querySelector("#titleOfTheBook").innerText = hobbit.title;
-document.querySelector("#nameOfTheAuthor").innerText = hobbit.author;
-document.querySelector("#numberOfPages").innerText = hobbit.pages;
+for (i = 0; i < myLibrary.length; i++) {
+  addItemToTheDOM(myLibrary[i]);
+}
