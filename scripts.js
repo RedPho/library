@@ -1,4 +1,4 @@
-let bookCard =  '<div class="col-sm-4">' +
+let htmlCard =  '<div class="col-sm-4">' +
                   '<div class="card">' +
                     '<div class="card-body">' +
                       '<h5 id="titleOfTheBook" class="card-title">Book title</h5>' +
@@ -11,3 +11,26 @@ let bookCard =  '<div class="col-sm-4">' +
                     '</div>' +
                   '</div>' +
                 '</div>'
+
+let myLibrary = [];
+
+function Book(title, author, pages) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+}
+
+let hobbit = new Book("The Hobbit", "Tolkien", 310)
+myLibrary.push(hobbit);
+console.log(myLibrary);
+
+function addBookToLibrary(theBook) {
+  myLibrary.push(theBook);
+}
+
+
+
+document.querySelector("#book-cards").innerHTML += htmlCard;
+document.querySelector("#titleOfTheBook").innerText = hobbit.title;
+document.querySelector("#nameOfTheAuthor").innerText = hobbit.author;
+document.querySelector("#numberOfPages").innerText = hobbit.pages;
