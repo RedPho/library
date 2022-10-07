@@ -6,7 +6,7 @@ let htmlCard =  '<div class="col-sm-4">' +
                         '<p id="nameOfTheAuthor" class="card-text">AuthorName</p>' +
                         '<span class="card-text">Number of pages:</span>' +
                         '<p id="numberOfPages" class="card-text">NumberOfPages</p>' +
-                        '<button id="is-readed" class="btn btn-info" style="margin-bottom: 7px;"></button>' +
+                        '<button id="is-readed" class="btn btn-info readedOrNot" style="margin-bottom: 7px;"></button>' +
                         '<button onclick="this.parentElement.parentElement.parentElement.remove()" class="btn btn-danger" style="margin-bottom: 7px;">Delete</button>' +
                     '</div>' +
                   '</div>' +
@@ -38,12 +38,17 @@ function addItemToTheDOM(myBook) {
   document.querySelector("#titleOfTheBook").innerText = myBook.title;
   document.querySelector("#nameOfTheAuthor").innerText = myBook.author;
   document.querySelector("#numberOfPages").innerText = myBook.pages;
+  let toggleButton = document.querySelector("#is-readed");
   if (myBook.isReaded == true) {
-    document.querySelector("#is-readed").innerText = "Readed: Yes"
+    toggleButton.innerText = "Readed: Yes"
   }
   else {
-    document.querySelector("#is-readed").innerText = "Readed: No"
+    toggleButton.innerText = "Readed: No"
   }
+
+
+
+
   
   document.querySelector("#titleOfTheBook").removeAttribute("id");
   document.querySelector("#nameOfTheAuthor").removeAttribute("id");
@@ -56,6 +61,17 @@ function updateDOM() {
     addItemToTheDOM(myLibrary[i]);
   }
   myLibrary = [];
+  let buttons = document.querySelectorAll(".readedOrNot")
+  buttons.forEach(toggleButton => {
+    toggleButton.addEventListener("click", function() {
+      if (toggleButton.innerText == "Readed: No") {
+        toggleButton.innerText = "Readed: Yes"
+      }
+      else {
+        toggleButton.innerText = "Readed: No"
+      }
+    })
+  })
 }
 
 updateDOM();
@@ -77,3 +93,15 @@ function addBookToDOM() {
 
 let submitButton = document.querySelector("#submit");
 submitButton.addEventListener("click", addBookToDOM);
+
+
+
+
+toggleButton.addEventListener("click", function(e) {
+  if (toggleButton.innerText == "Readed: No") {
+    toggleButton.innerText = "Readed: Yes"
+  }
+  else {
+    toggleButton.innerText = "Readed: No"
+  }
+})
