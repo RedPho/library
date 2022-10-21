@@ -14,11 +14,13 @@ let htmlCard =  '<div class="col-sm-4">' +
 
 let myLibrary = [];
 
-function Book(title, author, pages, isReaded) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isReaded = isReaded;
+class Book {
+  constructor(title, author, pages, isReaded) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isReaded = isReaded;
+  }
 }
 
 let hobbit = new Book("The Hobbit", "Tolkien", 310, true)
@@ -46,10 +48,6 @@ function addItemToTheDOM(myBook) {
     toggleButton.innerText = "Readed: No"
   }
 
-
-
-
-  
   document.querySelector("#titleOfTheBook").removeAttribute("id");
   document.querySelector("#nameOfTheAuthor").removeAttribute("id");
   document.querySelector("#numberOfPages").removeAttribute("id");
@@ -81,7 +79,7 @@ function addBookToDOM() {
   let inputAuthor = document.querySelector("#author").value;
   let inputPages = document.querySelector("#pages").value;
   let inputReaded = document.querySelector("#readed").checked;
-  
+
   let newBook = new Book(inputTitle, inputAuthor, inputPages, inputReaded);
   addBookToLibrary(newBook);
   updateDOM();
@@ -93,9 +91,6 @@ function addBookToDOM() {
 
 let submitButton = document.querySelector("#submit");
 submitButton.addEventListener("click", addBookToDOM);
-
-
-
 
 toggleButton.addEventListener("click", function(e) {
   if (toggleButton.innerText == "Readed: No") {
