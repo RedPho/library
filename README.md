@@ -1,2 +1,2 @@
 # library
-I will make a simple library app to practice javascript.
+Simple library app to keep track of readed/wanted to read books.

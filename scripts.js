@@ -90,7 +90,15 @@ function addBookToDOM() {
 }
 
 let submitButton = document.querySelector("#submit");
-submitButton.addEventListener("click", addBookToDOM);
+
+submitButton.addEventListener("click", () => {
+  if (document.querySelector("#pages").checkValidity()) {
+    addBookToDOM();
+  }
+  else {
+    document.querySelector("#validation-message").innerText = "ERROR";
+  }
+});
 
 toggleButton.addEventListener("click", function(e) {
   if (toggleButton.innerText == "Readed: No") {
